@@ -22,41 +22,30 @@ public class BFS
 	public static Set<Integer> alcanzables(Grafo g, int origen) 
 	{
 		Set<Integer> ret = new HashSet<Integer>();
-		inicializarBusqueda(g, origen);
+		inicializarRecorrido(g, origen);
 		
 		while (!L.isEmpty()) {
-			int i = seleccionarYMarcarVertice();
+			int i = L.get(0);
+			marcados[i] = true;
+			
 			ret.add(i);
-			agregarVecinosNoMarcados(g, i);
-			removerSeleccionado();
+			agregarVecinosPendientes(g, i);
+			L.remove(0);
 		}
 		return ret;
 	}
 
-	private static void removerSeleccionado() 
-	{
-		L.remove(0);
-	}
-
-	private static void agregarVecinosNoMarcados(Grafo g, int vertice) 
+	private static void agregarVecinosPendientes(Grafo g, int vertice) 
 	{		
 		for (int vecino : g.vecinos(vertice))
 			if (!marcados[vecino] && !L.contains(vecino))
 				L.add(vecino);
 	}
-
-	private static int seleccionarYMarcarVertice() 
-	{
-		int seleccionado = L.get(0);
-		marcados[seleccionado] = true;
-		return seleccionado;
-	}
-
-	private static void inicializarBusqueda(Grafo g, int origen) 
+	
+	private static void inicializarRecorrido(Grafo g, int origen) 
 	{
 		L = new LinkedList<Integer>();
 		marcados = new boolean[g.tamano()];
 		L.add(origen);
 	}
 }
-
