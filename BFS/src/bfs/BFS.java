@@ -24,7 +24,8 @@ public class BFS
 		Set<Integer> ret = new HashSet<Integer>();
 		inicializarRecorrido(g, origen);
 		
-		while (!L.isEmpty()) {
+		while (!L.isEmpty()) 
+		{
 			int i = L.get(0);
 			marcados[i] = true;
 			

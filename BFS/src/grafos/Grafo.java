@@ -7,7 +7,7 @@ public class Grafo
 {
 	// Representamos el grafo por su matriz de adyacencia
 	private boolean[][] A;
-	
+
 	// La cantidad de vertices esta predeterminada desde el constructor
 	public Grafo(int vertices)
 	{
@@ -20,9 +20,9 @@ public class Grafo
 		verificarVertice(i);
 		verificarVertice(j);
 		verificarDistintos(i, j);
-
+        
 		A[i][j] = true;
-		A[j][i] = true;
+		A[j][i] = true;		
 	}
 	
 	// Eliminacion de aristas
@@ -64,7 +64,13 @@ public class Grafo
 				ret.add(j);
 		}
 		
-		return ret;		
+		return ret;
+	}
+	
+	public int grado(int i)
+	{
+		verificarVertice(i);
+		return vecinos(i).size();
 	}
 	
 	// Verifica que sea un vertice valido
