@@ -26,10 +26,12 @@ public class BFS
 		
 		while (!L.isEmpty()) 
 		{
+			//refactoriza las siguientes 2 lineas:
 			int i = L.get(0);//Tomar un vertice de la lista
 			marcados[i] = true;//Lo marco como visitado
 			
 			ret.add(i);//agrego a mi conjunto de retorno
+			
 			agregarVecinosPendientes(g, i);
 			L.remove(0);
 		}
