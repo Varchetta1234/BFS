@@ -8,8 +8,8 @@ import grafos.Grafo;
 
 public class BFS 
 {
-	private static List<Integer> L;
-	private static boolean[] marcados;
+	private static List<Integer> L;    //Lista de vertices por procesar
+	private static boolean[] marcados; 
 	
 	public static boolean esConexo(Grafo g) 
 	{
@@ -26,17 +26,18 @@ public class BFS
 		
 		while (!L.isEmpty()) 
 		{
-			int i = L.get(0);
-			marcados[i] = true;
+			int i = L.get(0);//Tomar un vertice de la lista
+			marcados[i] = true;//Lo marco como visitado
 			
-			ret.add(i);
+			ret.add(i);//agrego a mi conjunto de retorno
 			agregarVecinosPendientes(g, i);
 			L.remove(0);
 		}
 		return ret;
 	}
 
-	private static void agregarVecinosPendientes(Grafo g, int vertice) 
+	private static void agregarVecinosPendientes(Grafo g, int vertice) //le paso grafo y vertice en cuestion
+//agregarVecinosNoMarcados(Grafo grafo, int i) es el que usa el profe 
 	{		
 		for (int vecino : g.vecinos(vertice))
 			if (!marcados[vecino] && !L.contains(vecino))
