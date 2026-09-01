@@ -27,6 +27,7 @@ public class BFS
 		while (!L.isEmpty()) 
 		{
 			//refactoriza las siguientes 2 lineas:
+			//seleccionarYMarcarVetice() es lo que hace el profe hoy:
 			int i = L.get(0);//Tomar un vertice de la lista
 			marcados[i] = true;//Lo marco como visitado
 			
